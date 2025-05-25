@@ -1,0 +1,383 @@
+﻿@using Ecommerce.Models;
+@model  IEnumerable<Ecommerce.Models.CartItem>
+@{
+    ViewBag.Title = "GetCartInfo";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .title {
+            margin-bottom: 5vh;
+        }
+
+        .card {
+            margin: auto;
+            max-width: 1200px;
+            width: 90%;
+            box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 1rem;
+            border: transparent;
+            margin-bottom: 10%;
+            font-size: 20px;
+        }
+
+        .cart {
+            background-color: #fff;
+            padding: 4vh 0vh;
+            border-bottom-left-radius: 1rem;
+            border-top-left-radius: 1rem;
+        }
+
+        .summary {
+            background-color: #ddd;
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            padding: 4vh;
+            color: rgb(65, 65, 65);
+            height: 100%;
+        }
+
+            .summary .col-2 {
+                padding: 0;
+            }
+
+            .summary .col-10 {
+                padding: 0;
+            }
+
+        .row {
+            margin: 5px 0;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-text-size-adjust: none;
+            font-family: 'SF Pro Text', sans-serif;
+            line-height: 1.42857143;
+            color: #000;
+            font-weight: 400;
+            box-sizing: border-box;
+            border: 0;
+            font-size: 100%;
+            outline: 0;
+            padding-bottom: 6%;
+            vertical-align: baseline;
+            margin-left: -15px;
+            margin-right: -15px;
+            margin-bottom: 1%;
+        }
+
+        .title b {
+            font-size: 1.5rem;
+        }
+
+        .main {
+            margin: 0;
+            padding: 2vh 6px;
+            width: 100%;
+        }
+
+        .col-2, .col {
+            padding: 0 1vh;
+        }
+
+        a {
+            padding: 0 1vh;
+        }
+
+        .close {
+            cursor: pointer;
+            margin-left: auto;
+            font-size: 0.7rem;
+        }
+
+        #hinh {
+            margin-left: 11%;
+            width: 5.5rem;
+        }
+
+        .back-to-shop {
+            margin-top: 1.5rem;
+        }
+
+        h5 {
+            margin-top: 4vh;
+        }
+
+        hr {
+            margin-top: 1.25rem;
+        }
+
+        form {
+            padding: 2vh 0;
+        }
+
+        select {
+            border: 1px solid rgba(0, 0, 0, 0.137);
+            padding: 1.5vh 1vh;
+            margin-bottom: 4vh;
+            outline: none;
+            width: 100%;
+            background-color: rgb(247, 247, 247);
+        }
+
+        input {
+            border: 1px solid rgba(0, 0, 0, 0.137);
+            padding: 1vh;
+            margin-bottom: 1vh;
+            outline: none;
+            width: 90%;
+        }
+
+            input:focus::-webkit-input-placeholder {
+                color: transparent;
+            }
+
+        .btn1 {
+            background-color: #000;
+            border-color: #000;
+            color: white;
+            width: 100%;
+            font-size: 0.7rem;
+            margin-top: 4vh;
+            padding: 1vh;
+            border-radius: 0;
+        }
+
+            .btn1:focus {
+                box-shadow: none;
+                outline: none;
+                box-shadow: none;
+                color: white;
+                -webkit-box-shadow: none;
+                -webkit-user-select: none;
+                transition: none;
+            }
+
+            .btn1:hover {
+                color: white;
+            }
+
+        a {
+            color: black;
+        }
+
+            a:hover {
+                color: black;
+                text-decoration: none;
+            }
+
+        #code {
+            background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+            background-repeat: no-repeat;
+            background-position-x: 95%;
+            background-position-y: center;
+        }
+
+        #quantity {
+            padding: 1vh;
+            margin-bottom: 1vh;
+            outline: none;
+            width: 26%;
+            margin-right: 5px;
+        }
+
+        .name {
+            padding: 0 32px;
+        }
+
+        .logo2 {
+            padding: 0 96px;
+        }
+
+        .table-head {
+            text-align: center;
+            border-spacing: 20px;
+            border-right: 1px solid;
+            height: 134px;
+            overflow-y: auto;
+        }
+
+        .table-container {
+            height: 150px;
+            overflow-y: auto;
+        }
+
+        .item {
+            border-bottom: dashed;
+        }
+
+        .box-scroll {
+            height: 500px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: 113%;
+        }
+
+        .img-fluid {
+            height: 75px;
+            width: 75px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="row">
+            <div class="col-md-7 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col"><h4><b>Giỏ hàng</b></h4></div>
+                        <div class="col align-self-center text-right text-muted">Mặt hàng</div>
+                    </div>
+                </div>
+                <div class="box-scroll">
+                    @foreach (var item in Model)
+                    {
+                        <div class="row border-top">
+                            <div class="row main align-items-center">
+                                <div class="col-2"><img class="img-fluid" id="hinh" src="~/Content/images/@item.ImagePro"></div>
+                                <div class="col">
+                                    <div class="row">@item.NamePro</div>
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="quantity" value="@item.Number" />
+
+                                </div>
+                                <div class="col">
+                                    @string.Format("{0:N0} VND", item.Price)
+
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCart_@item.ProductID">
+                                        Xóa
+                                    </button>
+
+                                    <!--button delete-->
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="deleteCart_@item.ProductID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Thong Bao</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    bạn muốn xóa sản phẩm @item.NamePro ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                                    <button type="button" class="btn btn-secondary delete-cart" data-bs-dismiss="modal" data-cart-id="@item.ProductID">Xóa</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end button delete-->
+                                    <!---->
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="back-to-shop"><a href="@Url.Action("Index","Home")">&leftarrow;</a><span class="text-muted">Trở lại mua hàng</span></div>
+            </div>
+            <div class="col-md-5 summary">
+                @using (Html.BeginForm("SaveOrder", "Cart"))
+                {
+                    <div class="logo2"><h4>THE COFFEE HOUSE</h4></div>
+                    <hr />
+                    <div><h5><b>Hóa đơn</b></h5></div>
+                    <div class="bill">
+                        <div class="row-text">
+                            <div class="col">Khách hàng : @Session["Ten"]</div>
+                            <div class="col">
+                                Địa chỉ :
+                                @if (Session["Diachi"] == null)
+                                {
+
+                                    <h3 style="color:red; font-size:13px; display:inline-block" name="DiaChi">Vui lòng nhập địa chỉ ở chi tiết khách hàng !</h3>
+                                }
+                                else
+                                {
+                                    @Session["Diachi"];
+                                }
+                            </div>
+                            <div class="col">Ngày : @DateTime.Now.Date</div>
+                            <div class="col">
+                                Số điện thoại :
+                                @if (Session["SDT"] == null)
+                                {
+
+                                    <h3 style="color:red; font-size:13px; display:inline-block">Vui lòng nhập SDT ở chi tiết khách hàng !</h3>
+                                }
+                                else
+                                {
+                                    @Session["SDT"];
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="table-container">
+                        <table cellspacing="0" class="table-head">
+
+                            <tr class="item">
+                                <th width="250">Tên sản phẩm</th>
+                                <th width="100">Số lượng</th>
+                                <th width="110">Đơn giá</th>
+                                <th width="110">Thành tiền</th>
+                            </tr>
+
+                            @foreach (var pro in Model)
+                            {
+                                <tr>
+                                    <td>@pro.NamePro</td>
+                                    <td class="name">@pro.Number</td>
+                                    <td>@string.Format("{0:N0}", pro.Price)</td>
+                                    <td></td>
+                                </tr>
+                            }
+
+
+                        </table>
+                    </div>
+                    <hr />
+
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+
+                        <div class="col">Tổng tiền</div>
+                        <div class="col text-right">
+                            @string.Format("{0:N0} VND", @ViewBag.TotalPrice)
+                        </div>
+                    </div>
+                        <button class="btn1 comfm" type="submit">
+                                Đặt hàng
+                        </button>
+                }
+                </div>
+        </div>
+    </div>
+</body>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.delete-cart').click(function() {
+            var IDPro = $(this).data("cart-id");
+            $.ajax({
+                url: "@Url.Action("DeleteCart", "Cart")",
+                type: 'POST', // Or 'GET' based on your server-side implementation
+                data: { id: IDPro },
+                success: function (result) {
+                    toastr.success("xoa thanh cong");
+                    window.location.href = result.redirectTo;
+                },
+                error: function (error) {
+                    toastr.error("xoa khong thanh cong !");
+                }
+            });
+        });
+    })
+</script>

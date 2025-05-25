@@ -1,0 +1,10 @@
+bin/
+obj/
+packages/
+*.sql
+*.user
+*.suo
+*.cache
+*.log
+*.db
+.vs/

@@ -1,0 +1,290 @@
+﻿@{
+    ViewBag.Title = "Introducepage";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/stylesheet.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".btn-group > .btn").click(function () {
+                $(this).addClass("active-item").siblings().removeClass("active-item").children().css('fill', 'black')
+                $(this).addClass("active-item").children().css('fill', 'white')
+            });
+        });
+    </script>
+</head>
+<body>
+    <style>
+        .text-center {
+            padding: 60px;
+            text-align: center;
+            text-justify: auto;
+            margin: 0;
+            margin-left: 180px;
+            font-size: 18px;
+            width: 1650px;
+            max-width: 100%;
+        }
+
+        .container {
+            margin-left: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .cloudfee-bg {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-text-size-adjust: none;
+            line-height: 1.42857143;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            box-sizing: border-box;
+            border: 0;
+            font-size: 100%;
+            outline: 0;
+            padding: 0;
+            vertical-align: baseline;
+            color: #fff;
+            margin: 0;
+            padding-right: 200px;
+        }
+
+        .story-img-1 {
+            padding-left: 120px;
+        }
+
+        .story-info, .story-info-1 {
+            padding-left: 240px;
+            color: white;
+        }
+
+        .story-img {
+            padding-right: -200px;
+        }
+
+        .row {
+            flex;
+        }
+
+        .video-title {
+            font-size: 70px;
+            text-align: center;
+            color: orange;
+        }
+
+        .cloud.desc {
+            font-size: 3px;
+            text-align: center;
+            color: white;
+        }
+
+        .flex-box {
+            color: darkorange;
+        }
+
+        .container {
+            margin-left: 240px;
+            margin-right: 120px;
+        }
+
+        .customer-img {
+            float: left;
+            display: flex;
+            border-radius: 10px;
+            margin-right: 15px;
+            justify-content: center;
+            align-items: center;
+            margin-left: 200px;
+        }
+
+
+        .midbanner-bg {
+            background: #45392c url("https://file.hstatic.net/1000075078/file/new_cloudfee_bg_21e3b1f33f7b4d069109cb81acf56b28.jpg");
+            background-position: top center;
+        }
+
+        .info-block {
+            color: white;
+        }
+
+        .cloud-btn, .cloud-btn2 {
+            color: darkorange;
+        }
+
+        .introduce-table {
+            margin-right: -200px;
+        }
+
+        .video-title {
+            margin-left: 180px;
+        }
+
+        .video-box {
+            margin-left: 180px;
+        }
+
+        .cloud-desc-1 {
+            margin-left: 180px;
+        }
+    </style>
+    <div id="topbanner-bg">
+        <img src="~/Images/topbanner.jpg" width="2000" height="1000" />
+        <div class="top-desc text-center">
+            Được kết hợp từ Cloud (đám mây) và coffee (cà phê), CloudFee gợi mở <br />
+            về một thế hệ cà phê mới, êm mượt như mây.
+        </div>
+    </div>
+    <div class="midbanner-bg">
+        <div>
+            <div class="container">
+                <div class="row flex align-c justify-s">
+                    <table class="introduce-table">
+                        <td>
+                            <div class="info-block">
+                                <span class="subtitle">CLOUDFEE</span>
+                                <div class="main-title">Creme Brulee</div>
+                                <div class="cloud-desc"><b>Thức uống "chiều chuộng bản thân" bậc nhất</b> cho những ai thích vị ngọt ngào hay muốn thưởng thức sự kết hợp độc đáo giữa món tráng miệng và thức uống.  </div>
+                                <a class="flex-box align-c cloud-btn" href="https://order.thecoffeehouse.com/cloud-fee" target="_blank" title="Êm mượt như mây, Chill là ghiền ngay!">
+                                    <span>Êm mượt như mây, Chill là ghiền ngay!</span>
+                                    <svg width="6" height="13" viewBox="0 0 6 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6.5L0 12.5V0.5L6 6.5Z" fill="#FEBF3E"></path></svg>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="img-block">
+                                <img src="https://hrv.hstatic.net/s_1000266602/_creme-brulee.png" alt="Creme Brulee">
+                            </div>
+                        </td>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="cloudfee-bg">
+            <div class="top-desc text-center">
+                <br>
+                Được kết hợp từ <b>Cloud</b> (đám mây) và cof<b>Fee</b> (cà phê), <b>CloudFee</b> gợi mở<br>về một thế hệ cà phê mới, êm mượt như mây.
+            </div>
+            <div class="cloudfee-block">
+                <div class="container">
+                    <div class="row flex-box flex-w align-c justify-s">
+                        <table class="introduce-table">
+                            <td>
+                                <div class="img-block">
+                                    <img src="https://hrv.hstatic.net/s_1000266602/_creme-brulee.png" alt="Creme Brulee">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="info-block">
+                                    <span class="subtitle">CLOUDFEE</span>
+                                    <div class="main-title">Creme Brulee</div>
+                                    <div class="cloud-desc"><b>Thức uống "chiều chuộng bản thân" bậc nhất</b> cho những ai thích vị ngọt ngào hay muốn thưởng thức sự kết hợp độc đáo giữa món tráng miệng và thức uống.  </div>
+                                    <a class="flex-box align-c cloud-btn" href="#" target="_blank" title="Êm mượt như mây, Chill là ghiền ngay!">
+                                        <span>Êm mượt như mây, Chill là ghiền ngay!</span>
+                                        <svg width="6" height="13" viewBox="0 0 6 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6.5L0 12.5V0.5L6 6.5Z" fill="#FEBF3E"></path></svg>
+                                    </a>
+                                </div>
+                            </td>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="cloudfee-block right">
+                <div class="container">
+                    <div class="row flex-box flex-w align-c justify-s">
+                        <table class="introduce-table">
+                            <td>
+                                <div class="info-block">
+                                    <span class="subtitle">CLOUDFEE</span>
+                                    <div class="main-title2">Creamy</div>
+                                    <div class="cloud-desc"><b>Thức uống "đánh thức" năng lượng ngày mới </b>hợp cho những ai mới bước vào thế giới cà phê hoặc ghiền cà phê nhưng muốn khám phá thêm nhiều hương vị mới.</div>
+                                    <a class="flex-box align-c cloud-btn" href="#" target="_blank" title="Êm mượt như mây, Tươi ngày mới ngay!">
+                                        <span>Êm mượt như mây, Tươi ngày mới ngay!</span>
+                                        <svg width="6" height="13" viewBox="0 0 6 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6.5L0 12.5V0.5L6 6.5Z" fill="#FEBF3E"></path></svg>
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="img-block">
+                                    <img src="https://hrv.hstatic.net/s_1000266602/_creamy.png" alt="Creamy">
+                                </div>
+                            </td>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="video">
+                <div class="container">
+                    <div class="video-title"><strong>CÀ PHÊ CÓ DÀNH CHO TẤT CẢ MỌI NGƯỜI?</strong></div>
+                    <div class="video-box">
+                        <div class="box-frame"><center><iframe width="650" height="400" src="https://www.youtube.com/embed/t5I96ycncPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></center></div>
+                    </div>
+                    <div class="cloud-desc-1">
+                        <center>
+                            Bạn có biết, mỗi ngày có hơn 2 tỷ cốc cà phê được uống trên toàn thế giới?
+
+                            Có người pha cùng sữa, có người rót thêm kem béo, hay kết hợp cùng… rượu whiskey, nhưng không phải ai cũng có thể thưởng thức cà phê một cách ngon lành. Bằng niềm khao khát mang ẩm thực thế giới vào từng ly cà phê bản địa, Edward Teonadi - Giám đốc phát triển sản phẩm tại The Coffee House đã tạo nên thế hệ cà phê mới mang tên CloudFee. Và giờ đây, bất kỳ ai ghé Nhà cũng có thể tìm thấy hương vị cà phê cho riêng mình.
+                        </center>
+
+                    </div>
+                    <div class="text-center flex-box justify-c">
+                        <a class="flex-box align-c cloud-btn read-more-modal" href=# title=" Đọc trọn câu chuyện">
+                            <div style="margin-left:-200px;"> Đọc trọn câu chuyện <svg width="6" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M6 6.5L0 12.5V0.5L6 6.5Z" fill="#FEBF3E"> </path> </svg></div>
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="story">
+                <div class="story-container">
+                    <div class="story-item flex-box flex-w align-c justify-s">
+                        <table>
+                            <td>
+                                <div class="story-img-1">
+                                    <img src="https://file.hstatic.net/1000075078/file/thinh_93cf92a5395043a2b634af4de08c0163.png" alt="CÀ PHÊ NGON CHỈ CÓ VỊ ĐẮNG?">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="story-info-1">
+                                    <div class="story-title">CÀ PHÊ NGON CHỈ CÓ VỊ ĐẮNG?</div>
+                                    <div class="cloud-desc">Từ ý tưởng về CloudFee của Edward, anh Phạm Phúc Thịnh - barista của The Coffee House nhận ra: Cà phê không nhất thiết phải đắng, phải chua thì mới ngon. Đôi khi một chút biến tấu, một chút ngọt ngào để yêu chiều bản thân mới thật sự quan trọng. Và đó là cách CloudFee Creme Brulee ra đời.</div>
+                                    <a class="cloud-btn2" href="#" target="_blank" title="Xem video nghe Thịnh kể chuyện">Xem video nghe Thịnh kể chuyện</a>
+                                </div>
+                            </td>
+
+                        </table>
+                    </div>
+                    <div class="story-item right flex-box flex-w align-c justify-s">
+                        <table>
+                            <td>
+                                <div class="story-info">
+                                    <div class="story-title">CÀ PHÊ ĐÂU CHỈ LÀ THỨC UỐNG</div>
+                                    <div class="cloud-desc">
+                                        Trong ly cà phê dành cho người mình thương có gì?
+
+                                        Khi nghe Edward chia sẻ về thế hệ cà phê mới CloudFee, anh Nguyễn Hoàng Hiếu - barista của The Coffee House chợt nhớ tới vợ mình. Cô ngại vị đắng của cà phê, nhưng cần một thức uống tỉnh táo mỗi sáng. Và CloudFee Creamy là món quà anh tặng cho người phụ nữ anh yêu.
+                                    </div>
+                                    <a class="cloud-btn2" href="#" target="_blank" title="Hiếu bật mí trong video này">Hiếu bật mí trong video này</a>
+                            </td>
+                            <td>
+                                <div class="story-img">
+                                    <img src="https://file.hstatic.net/1000075078/file/hieu_ed120096122f4c279ff41696f8b97eb3.png" alt="CÀ PHÊ ĐÂU CHỈ LÀ THỨC UỐNG">
+                                </div>
+                            </td>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+

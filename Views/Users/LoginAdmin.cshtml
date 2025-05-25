@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "LoginAdmin";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<script src="~/Scripts/Script.js"></script>
+<link href="~/Content/bootstrap.css" />
+<style>
+
+    .h1 {
+        align-items: center;
+        color: black;
+    }
+
+    .form-control {
+        background-color: whitesmoke;
+        border: none;
+        padding: 20px 45px 20px 20px;
+        width: 100%;
+        height: 40px;
+    }
+
+    .login {
+        width: 490px;
+        height: 420px;
+        background-color: transparent;
+        border-radius: 10px;
+        border-color: transparent;
+        background: url(Images/background.jpg) no-repeat;
+        padding: 20px 20px 20px 20px;
+        backdrop-filter: blur(20px);
+        border: 2px solid rgba(255,255,255,.2);
+    }
+
+    .btn2 {
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+        background-color: orange;
+        border: none;
+    }
+
+    .container-main {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+<div class="container-main">
+    <div class="login">
+        <h1 style="color:black">ĐĂNG NHẬP ADMIN</h1>
+        @using (Html.BeginForm("LoginAdmin", "Users"))
+        {
+            @Html.ValidationSummary(true)
+            <div class="mb-3 justify-content-center align-content-center">
+                <label for="name" class="form-label" style="color:black">Tài khoản:</label><input type="text" placeholder="Tài khoản" class="form-control" id="name" name="NameUser" required>
+            </div>
+            <div class="mb-3 justify-content-center align-content-center">
+                <label for="pwd" class="form-label" style="color:black">Mật khẩu:</label><input type="password" placeholder="Mật khẩu" class="form-control" id="pwd" name="PasswordUser" required>
+            </div>
+            <h3 style="color:red; font-size:13px">@ViewBag.ThongBao</h3>
+            <button type="submit" class="btn2 btn-light" style="color:cornsilk">XÁC NHẬN</button>
+        }
+    </div>
+</div>
+

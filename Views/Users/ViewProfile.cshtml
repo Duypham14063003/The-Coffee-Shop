@@ -1,0 +1,43 @@
+﻿@model Ecommerce.Models.Customer
+@{
+    ViewBag.Title = "ViewProfile";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<style>
+    .detailcus {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 420px;
+        border: 2px solid rgba(255,255,255,.2);
+    }
+   
+</style>
+
+
+<div>
+<div class="detailcus">
+    @Html.ValidationSummary(true)
+    <div class="form-group main">
+        <h3 class="text-center">Chi Tiết người dùng</h3>
+        
+            <div class="mb-3">
+                <label for="name" class="form-label" style="color:black" id="namecus">Tài khoản: @Html.DisplayFor(model => model.NameCus)</label>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label" style="color:black" id="namecus">Số điện thoại: @Html.DisplayFor(model => model.PhoneCus)</label>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label" style="color:black" id="namecus">Email: @Html.DisplayFor(model => model.EmailCus)</label>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label" style="color:black" id="namecus">Password: @Html.DisplayFor(model => model.PassCus)</label>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label" style="color:black" id="namecus">Địa chỉ: @Html.DisplayFor(model => model.DiaChi)</label>
+            </div>
+        @Html.ActionLink("Chỉnh sửa", "Edit", "Users", new { id = Model.IDCus }, new { @class = "btn btn-secondary" })
+    </div>
+</div>
+</div>
+

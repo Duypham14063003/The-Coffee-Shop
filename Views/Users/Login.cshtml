@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<link href="~/Content/bootstrap.css" />
+
+<link href="~/Content/toastr.css" rel="stylesheet" />
+
+
+<style>
+
+    .h1 {
+        align-items: center;
+        color: black;
+    }
+
+    .form-control {
+        background-color: whitesmoke;
+        border: none;
+        padding: 20px 45px 20px 20px;
+        width: 100%;
+        height: 40px;
+    }
+
+    .login {
+        width: 490px;
+        height: 420px;
+        background-color: transparent;
+        border-radius: 10px;
+        border-color: transparent;
+        background: url(Images/background.jpg) no-repeat;
+        padding: 20px 20px 20px 20px;
+        backdrop-filter: blur(20px);
+        border: 2px solid rgba(255,255,255,.2);
+    }
+
+    .btn2 {
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+        background-color: orange;
+        border: none;
+    }
+
+    .container-main {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<div class="container-main">
+    <div class="login">
+        <h1 style="color:black">ĐĂNG NHẬP</h1>
+        @using (Html.BeginForm("Login", "Users"))
+        {
+            @Html.ValidationSummary(true)
+            <div class="mb-3 justify-content-center align-content-center">
+
+                <label for="name" class="form-label" style="color:black">Tài khoản:</label><input type="text" placeholder="Tài khoản" class="form-control" id="name" name="NameCus" required>
+            </div>
+            <div class="mb-3 justify-content-center align-content-center">
+                <label for="pwd" class="form-label" style="color:black">Mật khẩu:</label><input type="password" placeholder="Mật khẩu" class="form-control" id="pwd" name="PassCus" required>
+            </div>
+            <h3 style="color:red; font-size:13px">@ViewBag.ThongBao</h3>
+
+            <button id="submit" type="submit" class="btn2 btn-light" style="color:cornsilk">XÁC NHẬN</button>
+            <div class="forgot">
+                <p style="color:black">Bạn chưa có tài khoản? @Html.ActionLink("Đăng ký", "Register")</p>
+                <p style="color:black">Bạn là Admin? @Html.ActionLink("Đăng nhập", "LoginAdmin")</p>
+            </div>
+        }
+
+    </div>
+</div>
+<script>
+
+</script>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Ecommerce.Models.Product>
+<style>
+    .text {
+        font-size: 20px;
+        color: black;
+        cursor: pointer;
+        transition: all ease-in-out 0.5s;
+        text-decoration: none;
+    }
+    .text:hover {
+        color: #ea8025;
+    }
+    .banner {
+        height: 330px;
+        border-radius: 15px;
+    }
+</style>
+
+
+<div class="container mt-5">
+    <div class="row" >
+        <div class="col" style="margin-right:7%" >
+            <img class="banner" src="~/Images/banner.png" alt="#" />
+        </div>
+       
+        @foreach (var item in Model)
+        {
+            <div class="col mt-3">
+                <div class="card-home">
+                    <img class="detail-image" src="~/Content/images/@item.ImagePro" alt="#" />
+                    @Html.ActionLink(item.NamePro, "Details","Product", new { id = item.ProductID }, new { @class = "text" })
+                <span style="color: #00000099">@string.Format("{0:N0} VND", item.Price)</span>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>

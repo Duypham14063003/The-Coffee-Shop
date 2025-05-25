@@ -1,0 +1,3 @@
+﻿@model Ecommerce.Models.Category
+@Html.DropDownListFor(model => model.IDCate,
+    new SelectList(Model.ListCase.OrderBy(model => model.NameCate), "IDCate", "NameCate"), "---chon---");

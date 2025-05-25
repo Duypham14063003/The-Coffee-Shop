@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Ecommerce.Models.Product>
+
+<style>
+    .text {
+        font-size: 15px;
+        color: black;
+        cursor: pointer;
+        transition: all ease-in-out 0.5s;
+        text-decoration: none;
+    }
+
+    .text:hover {
+        color: #ea8025;
+    }
+</style>
+
+
+<table style="margin: 20px 20px 30px 65px;">
+    @foreach (var item in Model)
+    {
+        <td  >
+            <div class="col" >
+                <a href="">
+                    <img class="lazyloaded" src="~/Content/images/@item.ImagePro" style="border-radius:15px;" />
+                    <div>
+                        @Html.ActionLink(item.NamePro, "Details", "Product", new { id = item.ProductID }, new { @class = "text" })
+                        <div>
+                            @string.Format("{0:N0} VND", item.Price)
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </td>
+    }
+
+</table>

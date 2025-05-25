@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="~/Scripts/script.js"></script>
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <!-- Toastr -->
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    /*nav*/
+    .nav-top {
+        position: relative;
+        background-color: rgba(225,225,225,0.4);
+        top: 0;
+        position: fixed;
+        width: 100%;
+        z-index: 5;
+        border-bottom: 0.5px solid #ccc;
+    }
+
+    .nav-ul {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 19px;
+    }
+
+        .nav-ul li {
+            padding: 19px 16px;
+            list-style: none;
+            line-height: 14px;
+            font-size: 14px;
+            height: 35px;
+        }
+
+            .nav-ul li a {
+                text-decoration: none;
+                color: black;
+                font-size: 18px;
+                cursor: pointer;
+                transition: all ease-in-out 0.5s;
+            }
+
+                .nav-ul li a:hover {
+                    color: #ea8025;
+                }
+
+    .trangchu {
+        text-decoration: none;
+        color: black;
+    }
+    /*content*/
+    .content {
+        margin-top: 74px;
+    }
+    /*btn cart*/
+    .cart{
+        position:absolute;
+        right:6%;
+    }
+    .cart i{
+        transition:all ease-in-out 0.5s;
+        cursor:pointer;
+    }
+        .cart i:hover {
+            color: #ea8025;
+        }
+    /*footer*/
+    .footer {
+        width: 100%;
+        height: 500px;
+        background-color: #000000D9;
+        padding: 25px 0;
+    }
+
+        .footer .col {
+            font-size: 14px;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-top: 0;
+        }
+
+    .img-logo {
+        position: absolute;
+        margin-top: -69px;
+        height: 159px;
+        left: 20px;
+    }
+
+    .footer_title {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .footer_link {
+        text-align: left;
+    }
+
+        .footer_link li {
+            list-style: none;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+</style>
+<body>
+
+    <div class="nav-top">
+        <ul class="nav-ul">
+            <li>
+                <a href="/" class="logo">
+                    <img class="img-logo" src="~/Images/Logo2.png"  height="10%" alt="#" />
+                </a>
+            </li>
+            <li><a href="@Url.Action("PageCF","Product")">Cà phê</a></li>
+            <li><a href="@Url.Action("PageTra","Product")">Trà</a></li>
+            <li><a href="@Url.Action("Menu","Product")">Cửa Hàng</a></li>
+            <li><a href="@Url.Action("IndexIntro","Introduce")">Giới Thiệu</a></li>
+            <li class="cart">
+                @Html.Action("CartPartial", "Cart")
+            </li>
+            <li class="button" style="right:0; position:absolute">
+                @if (Session["Ten"] == null)
+                {
+                    <a href="@Url.Action("Login", "Users")">Đăng nhập</a>
+
+                }
+                else
+                {
+                    <a title="Thông tin khách hàng" href="@Url.Action("ViewProfile","Users")" style="margin-right:1em;">@Session["Ten"]</a>
+
+                    <a class="button" style="right:0; position:absolute; margin-left:5px" href="@Url.Action("Logout","Users")">
+
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                }
+            </li>
+
+
+
+        </ul>
+
+    </div>
+
+    <div>
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- Footer -->
+    @Html.Action("footer", "Home")
+    <!-- Footer -->
+   
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="~/Scripts/toastr.js"></script>
+</body>
+
+</html>

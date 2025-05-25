@@ -1,0 +1,128 @@
+﻿@model IEnumerable < Ecommerce.Models.Product>
+
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+
+<style>
+    .nav-pills .nav-link {
+        font-family: 'SF Pro Display', sans-serif;
+        font-size: 20px;
+        color: rgba(0, 0, 0, 0.6);
+        position: relative;
+    }
+
+        .nav-pills .nav-link:hover {
+            color: #E57905
+        }
+
+    .product-list {
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .img {
+        border-radius: 25px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        margin-bottom: 5%;
+    }
+
+    .text {
+        font-family: 'SF Pro Display', sans-serif;
+        text-decoration: none;
+        color: #00000099;
+    }
+
+        .text:active {
+            color: #E57905
+        }
+
+        .text:hover {
+            color: #E57905
+        }
+
+    .price {
+        font-family: 'SF Pro Display', sans-serif;
+        font-size: 16px;
+        color: #00000099;
+        margin-bottom: 10px;
+    }
+
+    .search {
+        font-family: 'SF Pro Display', sans-serif;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.6);
+        position: relative;
+    }
+
+    .box {
+        width: 70%;
+        border-radius: 10px;
+        height: 40px;
+        border-style: solid;
+        border: 1px solid #ccc;
+        padding: 0px 0px 0px 10px;
+    }
+
+        .box:focus {
+            outline: none;
+            border-color: #E57905;
+        }
+</style>
+<div class="container-md">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Menu</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                   <!--Menu tất cả-->
+                    <li class="nav-item">
+                        <a href="@Url.Action("Menu","Product")" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Tất cả</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="container">
+                @using (Html.BeginForm("Menu", "Product", FormMethod.Get))
+                {
+                    <input type="text" class="box" name="Searching" placeholder="Tìm kiếm sản phẩm" />
+                    <br />
+                    if (Session["search"] != null)
+                    {
+                        <a style="color:black">Kết quả tìm kiếm của @Session["search"]</a>
+                        Session.Clear();
+                    }
+                }
+                <br />
+                <div class="row border-start">
+                    @foreach (var pro in Model)
+                    {
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="box-pro">
+                                <img src="~/Content/Images/@pro.ImagePro" width="200" class="img" />
+                                <div class="box-description">
+                                    <a class="text"> @Html.ActionLink(pro.NamePro, "Details", new { id = pro.ProductID }, new { @class = "text" })</a>
+                                    <p class="price">@string.Format("{0:N0} VND", pro.Price)</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+

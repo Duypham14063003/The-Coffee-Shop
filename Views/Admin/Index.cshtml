@@ -1,0 +1,144 @@
+﻿@model IEnumerable<Ecommerce.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout-admin.cshtml";
+}
+
+<div style="margin: 10px auto; width: 90%">
+    <h2 style="text-align: center">Quản lý sản phẩm</h2>
+    <p>
+        @Html.ActionLink("TẠO MỚI", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                TÊN SẢN PHẨM
+            </th>
+            <th>
+                MÔ TẢ
+            </th>
+            <th>
+                GIÁ
+            </th>
+            <th>
+                HÌNH
+            </th>
+            <th>
+                CATEGORY
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NamePro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DecriptionPro)
+                </td>
+                <td>
+                    @string.Format("{0:N0} VND", item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImagePro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category1.NameCate)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#SuaModal_@item.ProductID">
+                        Sửa
+                    </button>
+
+                    <!-- Modal Sửa -->
+                    <div class="modal fade" id="SuaModal_@item.ProductID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="suaModalLabel" aria-hidden="true">
+                        <!-- Nội dung modal Sửa -->
+                    </div>
+                    <!--button chi tiet-->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ChiTietModal_@item.ProductID">
+                        Chi tiết
+                    </button>
+
+                    <!--Modal-->
+                    <!-- Scrollable modal -->
+                    <div class="modal fade" id="ChiTietModal_@item.ProductID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Chi Tiết</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <h3 class="text-center title">Chi Tiết Sản Phẩm</h3>
+                                        <div>
+                                            Id Sản Phẩm: @Html.DisplayFor(model => item.ProductID)<br />
+                                            Tên: @item.NamePro <br />
+                                            Giá Tiền:@string.Format("{0:N0} VND", item.Price)
+                                            <img src="~/Content/images/@item.ImagePro" style="height:500px" />
+                                            Mô tả: @item.DecriptionPro
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--end-->
+                    <!--Button deelete-->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop_@item.ProductID">
+                        Xóa
+                    </button>
+
+
+                    <!--button delete-->
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop_@item.ProductID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Thong Bao</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    bạn muốn xóa sản phẩm @item.NamePro ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                    <button type="button" class="btn btn-secondary delete-pro" data-bs-dismiss="modal" data-pro-id="@item.ProductID">Xóa</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end button delete-->
+
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<script>
+     $(document).ready(function () {
+        $('.delete-pro').click(function() {
+            var IDPro = $(this).data("pro-id");
+            $.ajax({
+                url: "@Url.Action("DeleteProducts","Admin")",
+                type: 'POST', // Or 'GET' based on your server-side implementation
+                data: { id: IDPro },
+                success: function (result) {
+                    toastr.success("xoa thanh cong");
+                    window.location.href = result.redirectTo;
+                },
+                error: function (error) {
+                    toastr.error("xoa khong thanh cong !");
+                }
+            });
+        });
+    });
+</script>

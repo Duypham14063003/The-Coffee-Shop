@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Ecommerce.Models.Customer>
+
+@{
+    ViewBag.Title = "qlUser";
+    Layout = "~/Views/Shared/_Layout-admin.cshtml";
+}
+
+<div class="container">
+    <h2>Quản lý người dùng</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">IDCus</th>
+                <th scope="col">NameCus</th>
+                <th scope="col">PhoneCus</th>
+                <th scope="col">PassCus</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cus in Model)
+            {
+                <tr>
+                    <th scope="row">@cus.IDCus</th>
+                    <td>@cus.NameCus</td>
+                    <td>@cus.PhoneCus</td>
+                    <td>@cus.PassCus</td>
+                    <td>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Xóa
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Thông báo</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        bạn muốn xóa người dùng này?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                        <button type="button" class="btn btn-secondary delete-button" data-bs-dismiss="modal" data-cus-id="@cus.IDCus">Xóa</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Add this script in your view or layout to handle the Ajax request -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.delete-button').click(function() {
+
+            var IDCus = $(this).data("cus-id");
+            $.ajax({
+                url: "@Url.Action("DeleteUser","Admin")",
+                type: 'POST', // Or 'GET' based on your server-side implementation
+                data: { id: IDCus },
+                success: function (result) {
+                    
+                    window.location.href = result.redirectTo;
+
+                },
+                error: function (error) {
+                    toastr.error("xoa khong thanh cong !");
+                }
+            });
+        });
+    });
+</script>
+
+
+

@@ -1,0 +1,66 @@
+﻿
+@model IEnumerable<Ecommerce.Models.OrderDetailModel>
+
+@{
+    ViewBag.Title = "qlOrder";
+    Layout = "~/Views/Shared/_Layout-admin.cshtml";
+}
+
+<div style="margin: 10px auto; width: 90%">
+    <h2 style="text-align: center">Quản lý đơn hàng</h2>
+    <table class="table">
+        <tr>
+            <th>
+                ID đơn hàng
+            </th>
+            <th>
+                Ngày mua
+            </th>
+            <th>
+                Sản phẩm
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Tên khách hàng
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Tổng tiền
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdOrd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOrd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NamePro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressOrd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameCusOrd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuanityOrd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriceOrd)
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

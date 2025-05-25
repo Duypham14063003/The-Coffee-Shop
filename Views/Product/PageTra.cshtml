@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Ecommerce.Models.Product>
+@{
+    ViewBag.Title = "CÀ PHÊ TẠI NHÀ - The coffee house";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<style>
+    /*card*/
+    .detail-image {
+        border-radius: 15px;
+        width: 130%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .menu_item {
+    }
+
+    .menu_item_imgs {
+    }
+
+        .menu_item_imgs a img {
+            height: 280px;
+            border-radius: 25px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            margin-bottom: 5%;
+            text-decoration: none;
+        }
+
+    .menu_item_info h3 .text {
+        font-size: 20px;
+        color: #00000099;
+        cursor: pointer;
+        transition: all ease-in-out 0.5s;
+        text-decoration: none;
+    }
+
+        .menu_item_info h3 .text:hover {
+            color: #ea8025;
+        }
+</style>
+
+<div class="container mt-5">
+    <h2 class="mb-5 ">
+        Trà tại nhà
+    </h2>
+
+    <div class="container" style="margin: auto auto">
+        <div class="row align-items-start mb-5">
+
+            @foreach (var pro in Model)
+            {
+                <div class="col m-1">
+
+                    <div class="menu_item">
+                        <div class="menu_item_imgs">
+                            <a href="#" title="@pro.NamePro">
+                                <img src="~/Content/Images/@pro.ImagePro" />
+                            </a>
+                        </div>
+                        <div class="menu_item_info">
+                            <h3>
+
+                                @Html.ActionLink(pro.NamePro, "Details", new { id = pro.ProductID }, new { @class = "text" })
+
+                            </h3>
+                            <span style="color: #00000099">@string.Format("{0:N0} VND", pro.Price)</span>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+
+
+</div>

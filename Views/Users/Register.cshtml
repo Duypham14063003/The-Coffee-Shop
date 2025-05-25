@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+
+}
+<link href="~/Content/bootstrap.css" />
+<style>
+
+
+    h1 {
+        align-items: center;
+    }
+
+    .register {
+        width: 490px;
+        height: 550px;
+        background-color: transparent;
+        border-radius: 10px;
+        border-color: transparent;
+        padding: 20px 20px 20px 20px;
+        backdrop-filter: blur(20px);
+        border: 2px solid rgba(255,255,255,.2);
+        margin-bottom: 120px;
+    }
+
+    .form-control {
+        background-color: whitesmoke;
+        border: none;
+        padding: 20px 45px 20px 20px;
+        width: 100%;
+        height: 40px;
+       
+    }
+
+    #PassHelp.form-text {
+        margin-top: 0.25rem;
+        font-size: 0.6em;
+        color: #6c757d;
+    }
+
+    .btn1 {
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+        background-color: orange;
+        border: none;
+    }
+    .container-main {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<div class="container-main">
+    <div class="register">
+        <h1 style="color:black">ĐĂNG KÍ</h1>
+        @using (Html.BeginForm("Register", "Users"))
+        {
+            @Html.ValidationSummary(true)
+            <div class="mb-3">
+                <label for="InputAcc" class="form-label" style="color:black">Tên tài khoản: </label>
+                <input type="text" placeholder="Nhập tên tài khoản" class="form-control" id="name"
+                       name="NameCus" required>
+            </div>
+            <div class="mb-3">
+                <label for="InputEmail" class="form-label" style="color:black">Địa chỉ email:  </label>
+                <input type="email" placeholder="Nhập địa chỉ email" class="form-control" id="<email>"
+                       name="EmailCus" required>
+            </div>
+            <div class="mb-3">
+                <label for="InputPwd" class="form-label" style="color:black">Nhập mật khẩu: </label>
+                <input type="password" placeholder="Nhập mật khẩu: " class="form-control" id="pwd"
+                       name="PassCus" required aria-describedby="PassHelp">
+                <div style="color:mintcream" id="PassHelp" class="form-text">Vui lòng đặt mật khẩu có 8 kí tự trở lên không bao gồm(: ; " ' / < > { } [ ] + -)</div>
+
+            </div>
+            <div class="mb-3">
+                <label for="InputDiaChi" class="form-label" style="color:black">Nhập địa chỉ: </label>
+                <input type="text" placeholder="Nhập địa chỉ: " class="form-control" id="address"
+                       name="DiaChi">
+            </div>
+            <div class="mb-3">
+                <label for="InputPhone" class="form-label" style="color:black">Nhập số điện thoại: </label>
+                <input type="text" placeholder="Nhập số điện thoại" class="form-control" id="phone"
+                       name="PhoneCus" required>
+            </div>
+            <button type="submit" class="btn1 btn-light" style="color:cornsilk">XÁC NHẬN</button>
+        }
+    </div>
+</div>
+
+
+
