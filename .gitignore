@@ -1,10 +1,12 @@
+# Ignore build folders
 bin/
 obj/
-packages/
-*.sql
 *.user
 *.suo
 *.cache
+*.dll
+*.exe
+*.pdb
 *.log
-*.db
-.vs/
+*.vs
+.vscode/
