@@ -96,7 +96,7 @@
 
 1. Clone repository:
    ```bash
-   git clone https://github.com/Duypham14063003/Web-ban-ca-phe.git
+   git clone https://github.com/Duypham14063003/The-Coffee-Shop.git
    ```
 2. Mở project bằng VS
 3. Cấu hình kết nối tới cơ sở dữ liệu SQL Server trong file web.config.
